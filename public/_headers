@@ -2,5 +2,5 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  Permissions-Policy: document-domain=()
-  Content-Security-Policy: script-src 'self' static.cloudflareinsights.com; connect-src cloudflareinsights.com
+  Content-Security-Policy: default-src: 'none'; script-src static.cloudflareinsights.com; connect-src cloudflareinsights.com;
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
