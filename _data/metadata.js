@@ -4,12 +4,9 @@ export default {
 	language: "en-GB",
 	theme: "#8b0000",
 	description: "Messages from root",
-	feed: {
-		atom: "/feed",
-	},
 	author: {
 		name: "Marc Pervaz Boocha",
-		email: "mboocha@sudomsg.xyz",
+		email: "mboocha@sudomsg.com",
 		image: "/public/favicon.svg",
 		url: "/about/#marc-pervaz-boocha"
 	}
