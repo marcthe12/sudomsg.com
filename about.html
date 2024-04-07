@@ -1,0 +1,23 @@
+---
+layout: page.html
+title: About Me
+eleventyNavigation:
+  key: About Me
+  order: 3
+---
+<div itemscope itemtype="Person">
+	<section>
+		<h2 itemprop="name" >{{ metadata.author.name }}</h2>
+		<aside><img itemprop="image" alt="A Photo of me" src="{{metadata.author.image}}"></aside>
+		<p itemprop="description">I am an analytical and passionate fourth year <span itemprop="affiliation"
+				itemtype="CollegeOrUniversity" itemscope><span itemprop="name">CHRIST University</span></span>
+			student pursuing B. Tech in Computer Engineering in Bengaluru. I am eager to further my knowledge,
+			develop my skills and gain experience to convert my interest in computers into a fulfilling career.</p>
+		<p>Contact Details</p>
+		<ul>
+			<li><a href="mailto:{{metadata.author.email}}" itemprop="email">Email</a></li>
+			<li><a href="https://github.com/marcthe12" itemprop="sameas">Github</a></li>
+			<li><a href="https://www.linkedin.com/in/marc-pervaz-boocha-200706236/" itemprop"sameas">LinkedIn</a></li>
+		</ul>
+	</section>
+</div>

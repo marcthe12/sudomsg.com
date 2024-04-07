@@ -1,0 +1,47 @@
+---json
+{
+"date": "git Created"
+}
+---
+<!doctype html>
+<html lang="{{ metadata.language }}">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light dark">
+	<meta name="generator" content="{{ eleventy.generator }}">
+	<title property="og:title">{{ title or metadata.title }}</title>
+	<meta property="og:locale" content="{{ metadata.language }}">
+	<meta name="theme-color" content="{{ metadata.theme }}">
+	<meta name="description" property="og:description" content="{{ description or metadata.description }}">
+	<meta property="og:url" content="{{ page.url | htmlBaseUrl(metadata.url) }}">
+	<link rel="canonical" href="{{ page.url | htmlBaseUrl(metadata.url) }}">
+	<meta property="og:site_name" content="{{ metadata.title }}">
+	<meta name="author" content="{{ metadata.author.name }}">
+	<meta property="og:type" content="website">
+	<meta name="twitter:card" content="summary">
+	<link rel="alternate" href="{{ metadata.feed.atom }}" type="application/atom+xml" title="{{ metadata.title }}">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	{%- css %}{% include "assets/main.css" %}{% endcss %}
+	<link rel="stylesheet" href="{% getBundleFileUrl 'css' %}">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<a href="#">Sudomsg</a>
+			{%- for entry in collections.all | eleventyNavigation %}
+			<a href="{{ entry.url }}">{{ entry.title }}</a>
+			{%- endfor %}
+		</nav>
+	</header>
+	<main>
+		{{ content |safe }}
+	</main>
+	<footer>
+		Subscribe - <a href="/atom.xml">Atom</a>
+	</footer>
+</body>
+
+</html>

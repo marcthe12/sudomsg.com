@@ -1,0 +1,28 @@
+---json
+{
+"layout": "page.html",
+"title": "Posts",
+"eleventyNavigation": {
+"key": "Posts",
+"order": 2
+}
+}
+---
+<div itemscope itemtype={% schema "Blog" %} role="feed" aria-busy="false">
+	{% for post in collections.post %}
+	<article itemprop="blogPost" itemscope itemtype="{% schema 'BlogPosting' %}" aria-posinset="loop.index"
+		aria-setsize="loop.lenght">
+		<h3 itemprop="headline"><a href="{{ post.url }}" itemprop="sameAs">{{post.title or "p"}}</a></h3>
+		<small>
+			<time datetime="{{ post.date | htmlDateString }}" itemprop="datePublished">{{ post.date |
+				readableDate }}</time> - <span itemprop="author" itemscope
+				itemtype="{% schema 'Person' %}">
+				<a href="{{ metadata.author.url }}" rel="author" itemprop="url">
+					<span itemprop="name">{{metadata.author.name}}</span>
+				</a>
+			</span>
+		</small>
+		<p itemprop="abstract">{{description}}
+	</article>
+	{% endfor %}
+</div>

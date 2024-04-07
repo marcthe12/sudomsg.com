@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    color-scheme: dark light;
-}
-
 body {
     text-align: justify;
 }
@@ -15,15 +11,6 @@ body {
 * :any-link {
     color: inherit;
     text-decoration: underline;
-}
-
-* .header-anchor:any-link {
-    text-decoration: inherit;
-}
-
-* .header-anchor:any-link:hover,
-* .header-anchor:any-link:active {
-    font-style: inherit;
 }
 
 figcaption,
@@ -47,6 +34,7 @@ textarea {
     padding: 1rem;
     margin: auto;
     text-align: center;
+    height: auto;
 }
 
 figure,
@@ -108,7 +96,8 @@ a[href^="mailto:"]::after {
     content: "📧";
 }
 
-.side ,aside {
+.side,
+aside {
     max-width: 40%;
     margin: 1rem;
     float: right;
@@ -119,7 +108,9 @@ aside {
 }
 
 @media (max-width: 30rem) {
-    .side, aside {
+
+    .side,
+    aside {
         margin: inherit;
         max-width: 100%;
         float: none;
