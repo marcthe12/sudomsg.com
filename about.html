@@ -8,12 +8,12 @@
 }
 }
 ---
-<div itemscope itemtype="Person">
+<div itemscope itemtype="{% schema Person %}">
 	<section>
 		<h2 itemprop="name" id="{{ metadata.author.name | slugify }}">{{ metadata.author.name }}</h2>
 		<aside><img itemprop="image" alt="A Photo of me" src="{{metadata.author.image}}"></aside>
 		<p itemprop="description">I am an analytical and passionate fourth year <span itemprop="affiliation"
-				itemtype="CollegeOrUniversity" itemscope><span itemprop="name">CHRIST
+				itemtype="{% schema CollegeOrUniversity %}" itemscope><span itemprop="name">CHRIST
 					University</span></span>
 			student pursuing B. Tech in Computer Engineering in Bengaluru. I am eager to further my
 			knowledge,
