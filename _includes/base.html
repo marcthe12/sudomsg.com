@@ -4,41 +4,41 @@
 }
 ---
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html :lang="metadata.language">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="color-scheme" content="light dark">
-	<meta name="generator" content="{{ eleventy.generator }}">
-	<title property="og:title">{{ title or metadata.title }}</title>
-	<meta property="og:locale" content="{{ metadata.language }}">
-	<meta name="theme-color" content="{{ metadata.theme }}">
-	<meta name="description" property="og:description" content="{{ description or metadata.description }}">
-	<meta property="og:url" content="{{ page.url | htmlBaseUrl(metadata.url) }}">
-	<link rel="canonical" href="{{ page.url | htmlBaseUrl(metadata.url) }}">
-	<meta property="og:site_name" content="{{ metadata.title }}">
-	<meta name="author" content="{{ metadata.author.name }}">
+	<meta name="generator" :content="eleventy.generator">
+	<title property="og:title" @text="title || metadata.title"></title>
+	<meta property="og:locale" :content="metadata.language">
+	<meta name="theme-color" :content="metadata.theme">
+	<meta name="description" :property="og:description" :content="description || metadata.description">
+	<meta property="og:url" :content="htmlBaseUrl(page.url, metadata.url)">
+	<link rel="canonical" href="htmlBaseUrl(page.url, metadata.url)">
+	<meta property="og:site_name" :content="metadata.title">
+	<meta name="author" :content="metadata.author.name">
 	<meta property="og:type" content="website">
 	<meta name="twitter:card" content="summary">
-	<link rel="alternate" href="{{ metadata.feed.atom }}" type="application/atom+xml" title="{{ metadata.title }}">
+	<link rel="alternate" href="/atom.xml" type="application/atom+xml" :title="metadata.title">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-	{%- css %}{% include "assets/main.css" %}{% endcss %}
-	<link rel="stylesheet" href="{% getBundleFileUrl 'css' %}">
+	<link rel="stylesheet" href="../node_modules/modern-normalize/modern-normalize.css" />
+	<link rel="stylesheet" href="../node_modules/prismjs/themes/prism-okaidia.css" />
+	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep />
 </head>
 
 <body>
 	<header>
 		<nav>
 			<a href="#">Sudomsg</a>
-			{%- for entry in collections.all | eleventyNavigation %}
-			<a href="{{ entry.url }}">{{ entry.title }}</a>
-			{%- endfor %}
+			<template webc:for="entry of eleventyNavigation(collections.all)" webc:nokeep>
+				<a :href="entry.url" @text="entry.title"></a>
+			</template>
 		</nav>
 	</header>
-	<main>
-		{{ content |safe }}
-	</main>
+	<main @html="content"></main>
 	<footer>
 		Subscribe - <a href="/atom.xml">Atom</a>
 	</footer>

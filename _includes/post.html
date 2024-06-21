@@ -1,21 +1,19 @@
 ---json
 {
-"layout": "base.html",
-"tags": [
-"post"
-]
+"layout": "base"
 }
 ---
-<article itemscope itemtype={% schema "BlogPosting" %}>
-	<h1>{{ title }}</h1>
+<article itemscope :itemtype="schema('BlogPosting')">
+	<h1 @text="title"></h1>
 	<small>
-		<time datetime="{{ page.date | htmlDateString }}" itemprop="datePublished">{{ page.date | readableDate
-			}}</time>
-		- <span itemprop="author" itemscope itemtype="{% schema " Person" %}>
-			<a href="{{metadata.author.url}}" rel="author" itemprop="url">
-				<span itemprop="name">{{metadata.author.name}}</span>
+		<time :datetime="htmlDateString(page.date)" itemprop="datePublished"
+			@text="readableDate(page.date)"></time>
+		- <span itemprop="author" itemscope :itemtype="schema('Person')">
+			<a :href="metadata.author.url" rel="author" itemprop="url">
+				<span itemprop="name" @text="metadata.author.name"></span>
 			</a>
 		</span>
 	</small>
-	<div temprop: "articleBody">{{ content | safe }}</div>
+	<p><small itemprop="abstract" @content="(description"></small></p>
+	<div itemprop="articleBody" @html="content" />
 </article>

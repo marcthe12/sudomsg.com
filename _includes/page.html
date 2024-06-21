@@ -1,9 +1,9 @@
 ---json
 {
-"layout": "base.html"
+"layout": "base"
 }
 ---
 <article>
-	<h1>{{ title }}</h1>
-	{{ content | safe }}
+	<h1 @text="title"></h1>
+	<template @html="content" webc:nokeep />
 </article>

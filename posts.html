@@ -1,6 +1,6 @@
 ---json
 {
-"layout": "page.html",
+"layout": "page",
 "title": "Posts",
 "eleventyNavigation": {
 "key": "Posts",
@@ -8,21 +8,18 @@
 }
 }
 ---
-<div itemscope itemtype={% schema "Blog" %} role="feed" aria-busy="false">
-	{% for post in collections.post %}
-	<article itemprop="blogPost" itemscope itemtype="{% schema 'BlogPosting' %}" aria-posinset="loop.index"
-		aria-setsize="loop.lenght">
-		<h3 itemprop="headline"><a href="{{ post.url }}" itemprop="sameAs">{{post.title or "p"}}</a></h3>
+<div itemscope :itemtype="schema('Blog')" role="feed" aria-busy="false" webc:for="(post, index) of collections.post">
+	<article itemprop="blogPost" itemscope :itemtype="schema('BlogPosting')" :aria-posinset="index"
+		:aria-setsize="collections.post.lenght">
+		<h3 itemprop="headline"><a :href="post.url" itemprop="sameAs" @text="post.data.title"></a></h3>
 		<small>
-			<time datetime="{{ post.date | htmlDateString }}" itemprop="datePublished">{{ post.date |
-				readableDate }}</time> - <span itemprop="author" itemscope
-				itemtype="{% schema 'Person' %}">
-				<a href="{{ metadata.author.url }}" rel="author" itemprop="url">
-					<span itemprop="name">{{metadata.author.name}}</span>
-				</a>
-			</span>
+			<time :datetime="htmlDateString(post.date)" itemprop="datePublished"
+				@text="readableDate(post.date)"></time> -
+			<span itemprop=" author" itemscope :itemtype="schema('Person')"></span>
+			<a :href="metadata.author.url" rel="author" itemprop="url">
+				<span itemprop="name" @text="metadata.author.name">
+			</a>
 		</small>
-		<p itemprop="abstract">{{description}}
+		<p itemprop="abstract" @text="post.data.description"></p>
 	</article>
-	{% endfor %}
 </div>

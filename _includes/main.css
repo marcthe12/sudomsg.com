@@ -1,0 +1,112 @@
+html {
+    accent-color: darkred;
+    text-align: justify;
+}
+
+* :any-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+aside {
+    max-width: max(40%, 12rem);
+    background: darkred;
+    color: white;
+    float: right;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    width: fit-content;
+    padding: 1rem;
+    margin: auto;
+}
+
+img,
+svg,
+video,
+canvas {
+    height: auto;
+}
+
+picture {
+    display: contents;
+}
+
+@media screen {
+
+    * :any-link:hover,
+    * :any-link:active {
+        font-style: italic;
+    }
+
+    body {
+        max-width: min(100dvw, 58rem);
+        min-height: 100dvh;
+        padding: 0.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            'header'
+            'main'
+            'footer';
+        display: grid;
+    }
+
+    :is(header, footer) {
+        padding: 1rem;
+        font-weight: bolder;
+        background-color: darkred;
+    }
+
+    :is(header, footer) *:any-link {
+        text-decoration: none;
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    footer {
+        align-self: end;
+        grid-area: footer;
+    }
+
+    nav>a {
+        margin-right: 0.5rem;
+    }
+}
+
+@media print {
+
+    header,
+    footer {
+        display: none;
+    }
+
+    section,
+    table {
+        orphans: 4;
+        break-inside: auto;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-before: auto;
+    }
+}

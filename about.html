@@ -1,6 +1,6 @@
 ---json
 {
-"layout": "page.html",
+"layout": "page",
 "title": "About Me",
 "eleventyNavigation":{
 "key": "About Me",
@@ -8,23 +8,28 @@
 }
 }
 ---
-<div itemscope itemtype="{% schema 'Person' %}">
-	<section>
-		<h2 itemprop="name" id="{{ metadata.author.name | slugify }}">{{ metadata.author.name }}</h2>
-		<aside><img itemprop="image" alt="A Photo of me" src="{{metadata.author.image}}"></aside>
-		<p itemprop="description">I am an analytical and passionate fourth year <span itemprop="affiliation"
-				itemtype="{% schema 'CollegeOrUniversity' %}" itemscope><span itemprop="name">CHRIST
-					University</span></span>
-			student pursuing B. Tech in Computer Engineering in Bengaluru. I am eager to further my
-			knowledge,
-			develop my skills and gain experience to convert my interest in computers into a fulfilling
-			career.</p>
-		<p>Contact Details</p>
-		<ul>
-			<li><a href="mailto:{{metadata.author.email}}" itemprop="email">Email</a></li>
-			<li><a href="https://github.com/marcthe12" itemprop="sameas">Github</a></li>
-			<li><a href="https://www.linkedin.com/in/marc-pervaz-boocha-200706236/"
-					itemprop"sameas">LinkedIn</a></li>
-		</ul>
-	</section>
+
+<div itemscope :itemtype="schema('ProfilePage')">
+	<section itemprop="mainEntity" itemscope :itemtype="schema('Person')">
+		<h2 itemprop="name" :id="slugify(metadata.author.name)" @content="metadata.author.name">Marc</h2>
+		<aside><img itemprop="image" alt="A Photo of me" :src="metadata.author.image"></aside>
+		<div itemprop="description">
+			Likes to create programs. Loves to be updated on the latest news and in General
+			Knowledge.
+		</div>
+		<div>
+			<h3>Personal Information</h3>
+			<p>Working: <span itemprop="memberof">Qburst</span></p>
+			<p>Lives in: <span itemprop="address">Bangalore</span></p>
+		</div>
+		<div>
+			<h3>Contact Details</h3>
+			<ul>
+				<li><a href="mailto:{{metadata.author.email}}" itemprop="email">Email</a></li>
+				<li><a href="https://github.com/marcthe12" itemprop="sameas">Github</a></li>
+				<li><a href="https://www.linkedin.com/in/marc-pervaz-boocha-200706236/"
+						itemprop="sameas">LinkedIn</a></li>
+			</ul>
+		</div>
+</div>
 </div>

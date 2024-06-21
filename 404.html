@@ -6,10 +6,10 @@
 "eleventyExcludeFromCollections": true
 }
 ---
-{% css %}
+<style>
 h1 { color: red; }
-{% endcss %}
+</style>
 
 <h1>ERROR: 404</h1>
-<p>{{ title }}</p>
+<p @text="title"></p>
 Go <a href="/">home</a>.
