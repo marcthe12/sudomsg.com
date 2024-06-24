@@ -25,7 +25,7 @@ export default async function(eleventyConfig) {
 			name: "post"
 		},
 		metadata: {
-			language: "en",
+			language: "en-GB",
 			title: "Sudomsg",
 			subtitle: "Messages from Root",
 			base: "https://sudomsg.com/",
@@ -109,7 +109,11 @@ export default async function(eleventyConfig) {
 		markdownTemplateEngine: "njk",
 		htmlTemplateEngine: "webc",
 		dir: {
-			output: "dist"
+			output: "dist",
+			input: "src",
+			includes: "../includes",
+			data: "../data",
+			components: "components",
 		}
 	}
 }

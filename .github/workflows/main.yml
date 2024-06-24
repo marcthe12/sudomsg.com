@@ -27,3 +27,4 @@ jobs:
           projectName: sudomsg-com
           directory: dist/
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
