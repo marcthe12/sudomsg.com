@@ -108,6 +108,8 @@ export default async function(eleventyConfig) {
 	return {
 		markdownTemplateEngine: "njk",
 		htmlTemplateEngine: "webc",
-		output: "dist"
+		dir: {
+			output: "dist"
+		}
 	}
 }
