@@ -8,11 +8,6 @@ import pluginWebc from "@11ty/eleventy-plugin-webc";
 
 import { DateTime } from "luxon";
 
-import postcss from "postcss";
-import cssnano from 'cssnano';
-
-import htmlmin from "html-minifier";
-
 export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 	eleventyConfig.addPlugin(RenderPlugin);
@@ -39,40 +34,7 @@ export default async function(eleventyConfig) {
 
 	eleventyConfig.addPlugin(directoryOutputPlugin);
 
-	eleventyConfig.addPlugin(pluginWebc, {
-		bundlePluginOptions: {
-			transforms: [
-				async function(content) {
-					if (this.type === 'css') {
-						let result = await postcss([
-							cssnano({
-								preset: "default",
-							})
-						]).process(content, {
-							from: this.page.inputPath,
-							to: null
-						});
-						return result.css;
-					}
-
-					return content;
-				}
-			]
-		},
-	});
-
-	eleventyConfig.addTransform("htmlmin", function(content) {
-		if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
-			let minified = htmlmin.minify(content, {
-				useShortDoctype: true,
-				removeComments: true,
-				collapseWhitespace: true,
-			});
-			return minified;
-		}
-
-		return content;
-	});
+	eleventyConfig.addPlugin(pluginWebc);
 
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/",
