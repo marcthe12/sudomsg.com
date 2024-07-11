@@ -16,7 +16,7 @@
 	<meta name="theme-color" :content="metadata.theme">
 	<meta name="description" :property="og:description" :content="description || metadata.description">
 	<meta property="og:url" :content="htmlBaseUrl(page.url, metadata.url)">
-	<link rel="canonical" href="htmlBaseUrl(page.url, metadata.url)">
+	<link rel="canonical" :href="htmlBaseUrl(page.url, metadata.url)">
 	<meta property="og:site_name" :content="metadata.title">
 	<meta name="author" :content="metadata.author.name">
 	<meta property="og:type" content="website">
