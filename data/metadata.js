@@ -7,7 +7,7 @@ export default {
 	author: {
 		name: "Marc Pervaz Boocha",
 		email: "mboocha@sudomsg.com",
-		image: "/public/favicon.svg",
+		image: "/public/profile.jpg",
 		url: "/about/#marc-pervaz-boocha"
 	}
 }
