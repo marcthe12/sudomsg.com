@@ -1,4 +1,4 @@
-import { EleventyHtmlBasePlugin, RenderPlugin, InputPathToUrlTransformPlugin } from '@11ty/eleventy';
+import { IdAttributePlugin, EleventyHtmlBasePlugin, RenderPlugin, InputPathToUrlTransformPlugin } from '@11ty/eleventy';
 import syntaxHighlightPlugin from "@11ty/eleventy-plugin-syntaxhighlight";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
@@ -12,6 +12,7 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 	eleventyConfig.addPlugin(RenderPlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
+	eleventyConfig.addPlugin(IdAttributePlugin);
 	eleventyConfig.addPlugin(syntaxHighlightPlugin);
 	eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom",

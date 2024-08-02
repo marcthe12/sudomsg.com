@@ -8,7 +8,7 @@
 	},
 	"author": "Marc Pervaz Boocha",
 	"dependencies": {
-		"@11ty/eleventy": "^3.0.0-alpha.16",
+		"@11ty/eleventy": "^3.0.0-beta.1",
 		"@11ty/eleventy-img": "^4.0.2",
 		"@11ty/eleventy-navigation": "^0.3.5",
 		"@11ty/eleventy-plugin-bundle": "^2.0.2",
@@ -17,7 +17,9 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11ty/eleventy-plugin-webc": "^0.11.2",
 		"@sindresorhus/slugify": "^2.2.1",
+		"install": "^0.13.0",
 		"modern-normalize": "^2.0.0",
+		"npm": "^10.8.2",
 		"prismjs": "^1.29.0"
 	}
 }
