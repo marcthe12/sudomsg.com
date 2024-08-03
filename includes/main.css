@@ -12,9 +12,9 @@ aside {
 	max-width: max(40%, 12rem);
 	background: darkred;
 	color: white;
-	float: right;
+	float: inline-end;
 	margin: 0.5rem;
-	margin-left: 1rem;
+	margin-inline-start: 1rem;
 	padding: 0.5rem;
 }
 
@@ -26,8 +26,7 @@ audio,
 iframe,
 embed,
 object {
-	max-width: 100%;
-	width: fit-content;
+	max-inline-size: 100%;
 	display: block;
 }
 
@@ -35,7 +34,7 @@ img,
 svg,
 video,
 canvas {
-	height: auto;
+	block-size: auto;
 }
 
 picture {
@@ -54,8 +53,8 @@ picture {
 		max-width: min(100dvw, 58rem);
 		min-height: 100dvh;
 		padding: 0.5rem;
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline-start: auto;
+		margin-inline-end: auto;
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 1fr auto;
 		grid-template-areas:
@@ -71,7 +70,7 @@ picture {
 		font-weight: bolder;
 		background-color: darkred;
 
-		*:any-link {
+		& *:any-link {
 			text-decoration: none;
 		}
 	}
@@ -90,7 +89,7 @@ picture {
 	}
 
 	nav>a {
-		margin-right: 0.5rem;
+		margin-inline-end: 0.5rem;
 	}
 }
 
