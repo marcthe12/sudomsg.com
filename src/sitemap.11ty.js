@@ -1,7 +1,7 @@
 export default class {
 	data() {
 		return {
-			permalink: "/sitemapa.xml",
+			permalink: "/sitemap.xml",
 			eleventyExcludeFromCollections: true
 		};
 	}

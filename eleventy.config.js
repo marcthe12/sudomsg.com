@@ -38,7 +38,7 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginWebc);
 
 	eleventyConfig.addPassthroughCopy({
-		"./public/": "/",
+		"public/": "/",
 	});
 
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
