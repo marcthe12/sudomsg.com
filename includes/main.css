@@ -1,4 +1,4 @@
-html {
+:root {
 	accent-color: darkred;
 	text-align: justify;
 }
@@ -62,35 +62,38 @@ picture {
 			'main'
 			'footer';
 		display: grid;
-	}
 
-	header,
-	footer {
-		padding: 1rem;
-		font-weight: bolder;
-		background-color: darkred;
+		&>header,
+		&>footer {
+			padding: 1rem;
+			font-weight: bolder;
+			background-color: darkred;
 
-		& *:any-link {
-			text-decoration: none;
+			& *:any-link {
+				text-decoration: none;
+			}
 		}
+
+		&>header {
+			grid-area: header;
+
+			& nav>a {
+				margin-inline-end: 0.5rem;
+			}
+		}
+
+		&>main {
+			grid-area: main;
+		}
+
+		&>footer {
+			align-self: end;
+			grid-area: footer;
+		}
+
 	}
 
-	header {
-		grid-area: header;
-	}
 
-	main {
-		grid-area: main;
-	}
-
-	footer {
-		align-self: end;
-		grid-area: footer;
-	}
-
-	nav>a {
-		margin-inline-end: 0.5rem;
-	}
 }
 
 @media (forced-colors: active) {
