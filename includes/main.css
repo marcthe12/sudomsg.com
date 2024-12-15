@@ -39,7 +39,6 @@ canvas {
 
 picture {
 	display: contents;
-
 }
 
 @media screen {
@@ -68,6 +67,7 @@ picture {
 			padding: 1rem;
 			font-weight: bolder;
 			background-color: darkred;
+			color: white;
 
 			& *:any-link {
 				text-decoration: none;
@@ -92,7 +92,6 @@ picture {
 		}
 
 	}
-
 
 }
 

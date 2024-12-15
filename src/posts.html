@@ -1,20 +1,10 @@
----json
-{
-"layout": "page",
-"title": "Posts",
-"eleventyNavigation": {
-"key": "Posts",
-"order": 2
-}
-}
----
 <div itemscope :itemtype="schema('Blog')" role="feed" aria-busy="false" webc:for="(post, index) of collections.post">
 	<article itemprop="blogPost" itemscope :itemtype="schema('BlogPosting')" :aria-posinset="index"
 		:aria-setsize="collections.post.lenght">
 		<h3 itemprop="headline"><a :href="post.url" itemprop="sameAs" @text="post.data.title"></a></h3>
 		<small>
-			<time :datetime="htmlDateString(post.date)" itemprop="datePublished"
-				@text="readableDate(post.date)"></time> -
+			<time :datetime="htmlDateString(post.date)" itemprop="datePublished" @text="readableDate(post.date)"></time>
+			-
 			<span itemprop=" author" itemscope :itemtype="schema('Person')"></span>
 			<a :href="metadata.author.url" rel="author" itemprop="url">
 				<span itemprop="name" @text="metadata.author.name">

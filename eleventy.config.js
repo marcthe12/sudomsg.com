@@ -3,12 +3,14 @@ import syntaxHighlightPlugin from "@11ty/eleventy-plugin-syntaxhighlight";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import directoryOutputPlugin from "@11ty/eleventy-plugin-directory-output";
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img"
 import pluginWebc from "@11ty/eleventy-plugin-webc";
 
 import { DateTime } from "luxon";
 
-export default async function(eleventyConfig) {
+import { readFileSync } from 'node:fs';
+
+export default async function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 	eleventyConfig.addPlugin(RenderPlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
@@ -32,10 +34,12 @@ export default async function(eleventyConfig) {
 		}
 	});
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
-
 	eleventyConfig.addPlugin(directoryOutputPlugin);
-
-	eleventyConfig.addPlugin(pluginWebc);
+	eleventyConfig.addPlugin(pluginWebc, {
+		components: [
+			"npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc",
+		],
+	});
 
 	eleventyConfig.addPassthroughCopy({
 		"public/": "/",
@@ -51,21 +55,15 @@ export default async function(eleventyConfig) {
 			loading: "lazy"
 		},
 	});
-
 	eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
-
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
-		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
+		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy")
 	});
+	eleventyConfig.addFilter('htmlDateString', dateObj => DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd'));
+	eleventyConfig.addShortcode('schema', type => (type instanceof URL ? type : new URL(type, "http://schema.org/")).href);
 
-	eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-		return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
-	});
-
-	eleventyConfig.addShortcode('schema', (type) => {
-		return (type instanceof URL ? type : new URL(type, "http://schema.org/")).href;
-	});
+	eleventyConfig.addFilter('embed', path => readFileSync(path, { encoding: 'utf8' }));
 
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setDynamicPermalinks(false);
@@ -80,5 +78,5 @@ export default async function(eleventyConfig) {
 			data: "../data",
 			components: "components",
 		}
-	}
+	};
 }
