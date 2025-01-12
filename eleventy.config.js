@@ -10,6 +10,7 @@ import { DateTime } from "luxon";
 
 import { readFileSync } from 'node:fs';
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 	eleventyConfig.addPlugin(RenderPlugin);
